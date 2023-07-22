@@ -1,0 +1,192 @@
+
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    background-image: url(../images/header-bg.png);
+    background-repeat: none;
+    background-size: cover;
+    width: 100%;
+    z-index: 1;
+    height: 16vh;
+}
+
+.navbar img {
+    height: 120px;
+    width: 120px;
+}
+
+.navbar li {
+    margin-left: 10px;
+}
+.navbar-nav li
+{
+    margin: 0 15px 0 15px;
+}
+.navbar-nav div
+{
+    margin: 0 27px 0 27px;
+
+}
+.search {
+    min-width: 30vw;
+    min-height: 40px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgb(89, 60, 95, 0.3);
+    border: none;
+    outline: none;
+}
+
+.search:hover {
+    min-width: 30vw;
+    min-height: 40px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: rgb(89, 60, 95, 0.9) 2px 2px 2px;
+    border: none;
+    padding: 2px 2px 2px 2px;
+}
+/* ------------------------Layout------------------------ */
+
+.Container
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image:linear-gradient(to  right, rgba(40, 166, 201, 0.8),rgba(153, 162, 165, 0.8));
+}
+#particles-js {
+    position: absolute;
+    left: 12vh;
+    width:80vw ;
+    height: 80vh;
+    
+  }
+.login-box{
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color:rgb(241, 239, 239);
+  }
+  .login-box h1{
+    float: left;
+    font-size: 40px;
+    border-bottom: 6px solid #4caf50;
+    margin-bottom: 50px;
+    padding: 13px 0;
+  }
+  .textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #4caf50;
+  }
+  .textbox i{
+    width: 26px;
+    float: left;
+    text-align: center;
+  }
+  .textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    color: rgb(59, 55, 63);
+    font-size: 18px;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+  }
+  .btun{
+    width: 100%;
+    background-image:linear-gradient(to  right, rgba(40, 201, 161, 0.8),rgba(184, 229, 147, 0.8));
+    border: 2px solid #4caf50;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+  }
+
+  
+  .footer {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+    height: fit-content;
+    background-image: url("../images/header-bg.png");
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer h1 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+footer h4 {
+    font-size: 1rem;
+}
+
+.contact-links {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.contact-links i {
+    padding: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: rgb(255, 255, 255);
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+
+.contact-links i:hover {
+    color: rgb(10, 14, 13);
+}
+#alerty
+{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+}
+#close {
+  display: inline-block;
+  padding: 2px 5px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+#close:hover {
+  display: inline-block;
+  padding: 2px 5px;
+  color: white;
+}
+
+#msg {
+  border: none;
+  outline: none;
+  font-size: 17px;
+}

@@ -1,0 +1,129 @@
+<%- include("layouts/header") %>
+
+ <div class="main_container">
+       
+        <div class="sub_container1"> 
+            <div class="body-content">
+                <section  id="particles-js">
+                    <div  class="entire-content">
+                        <div class="content-carrousel">
+                            <figure class="shadowslider"><img class="img-fluid" src=".." ></figure>
+                            <figure class="shadowslider"><img class="img-fluid"  src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                            <figure class="shadowslider"><img class="img-fluid"   src=".."></figure>
+                        </div>
+                    </div>
+                </section> 
+
+                <section id="info">
+                    </br>
+                        We ensure better education for a better world.
+                    </br>
+                </section>
+
+                <section class="cards">
+
+                    <div class="card text-white bg-success mb-3"  style="max-width: 18rem; max-height: 8rem;">
+                        <div class="card-header">Courses</div>
+                        <div class="card-body">
+                          <p class="card-text"><% if(statistics["Courses"]){ %> <%= statistics["Courses"] %> <%} else{ %>0<%} %></p>
+                        </div>
+                      </div>
+                    <div class="card text-white bg-info mb-3" style="max-width: 18rem; max-height: 8rem;">
+                        <div class="card-header">Instructors</div>
+                        <div class="card-body">
+                          <p class="card-text"><% if(statistics["Instructors"]){ %> <%= statistics["Instructors"]%> <%} else{ %>0<%} %></p>
+                        </div>
+                      </div>
+                    <div class="card text-white bg-warning mb-3"  style="max-width: 18rem; max-height: 8rem;">
+                        <div class="card-header">Students</div>
+                        <div class="card-body">
+                          <p class="card-text"><% if(statistics["Students"] ){ %> <%= statistics["Students"] %> <%} else{ %>0<%} %></p>
+                        </div>
+                      </div>
+                </section>
+            </div>
+        </div>
+        <div class="sub_container2">
+          <% if(top_5_Courses.length>0) { %>
+           <p>Top Rated</p>
+           <% if(top_5_Courses.length<4 ) { %>
+              <div id="TopCourses">
+                <% for(let i = 0; i < top_5_Courses.length; i++) { %>
+                  <div id="all" class=" wow animate__animated animate__backInLeft">
+                      <div class="content">
+                        <div class="feature">
+                          <div class="courseName">
+                            <label><%= top_5_Courses[i].Course_Name %><br></label>
+                          </div>
+                          <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
+                          <div class="text">
+                            <div class="instructorNmae">
+                              <img src="/images/logo2(2).png" class="user-img" alt="" >
+                              <label><%= top_5_Courses[i].Fname %> <%= top_5_Courses[i].Lname %><br></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <% } %>
+              </div>
+            <%} else { %>
+              <div id="TopCourses">
+                <% for(let i = 0; i < 4 ; i++) { %>
+                  <div id="all" class=" wow animate__animated animate__backInLeft">
+                      <div class="content">
+                        <div class="feature">
+                          <div class="courseName">
+                            <label><%= top_5_Courses[i].Course_Name %><br></label>
+                          </div>
+                          <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
+                          <div class="text">
+                            <div class="instructorNmae">
+                              <img src="/images/logo2(2).png" class="user-img" alt="" >
+                              <label><%= top_5_Courses[i].Fname %> <%= top_5_Courses[i].Lname %><br></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <% } %>
+              </div>
+              <div id="TopCourses">
+                <% for(let i = 4; i < top_5_Courses.length ; i++) { %>
+                  <div id="all" class=" wow animate__animated animate__backInLeft">
+                      <div class="content">
+                        <div class="feature">
+                          <div class="courseName">
+                            <label><%= top_5_Courses[i].Course_Name %><br></label>
+                          </div>
+                          <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
+                          <div class="text">
+                            <div class="instructorNmae">
+                              <img src="/images/logo2(2).png" class="user-img" alt="" >
+                              <label><%= top_5_Courses[i].Fname %> <%= top_5_Courses[i].Lname %><br></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <% } %>
+              </div>
+              <% } %>
+          <% } %>
+      </div>          
+
+    </div>
+  
+ </div>
+    
+
+<%- include("layouts/footer") %>

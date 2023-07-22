@@ -1,0 +1,48 @@
+<%- include("layouts/header") %>
+    <div class="main-cont">
+            <!-- <div class="sidenav">
+                <div>
+                    <div class="userImg">
+                        <img class="userphoto" src="/images/user.jpg" alt="Avatar" style="border-radius: 50%;">
+                    </div>
+                </div>
+                <h2 class="Name">UNKOWN</h2>
+
+                <div class="choices">
+                    <a href="/Account_Settings">Profile</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                    <a href="#">Log Out</a>
+                </div>
+            </div> -->
+
+            <!------------------ Achievements section------------------->
+
+            <div class="ach-container">
+                <h2 class="achievements-title">Achievements</h2>
+                <% for (var i=0; i < courses.length; i++) {%>
+                <div class="cards">
+                    <div class="card-cont">
+                        <a href="#" class="card-link">
+                            <div class="course-card">
+                                <img src="/images/dataScience.png" alt="course">
+                                <div class="course-cont">
+                                    <h4><b> <%= courses[i].Course_Name %> </b></h4>
+                                    <p><%= courses[i].Course_info %></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% } %>
+              
+
+                    
+
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <%- include("layouts/footer") %>

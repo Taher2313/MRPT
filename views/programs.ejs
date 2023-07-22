@@ -1,0 +1,113 @@
+<%- include("layouts/header") %>
+    <div class="main-cont">
+        <div class="header-nav">
+        </div>
+
+        <div class="Programs float_l">
+
+            <style>
+                /* Image Zoom Effect */
+                .image-card img {
+                    -webkit-transition: all 1s ease;
+                    /* Safari and Chrome */
+                    -moz-transition: all 1s ease;
+                    /* Firefox */
+                    -o-transition: all 1s ease;
+                    /* IE 9 */
+                    -ms-transition: all 1s ease;
+                    /* Opera */
+                    transition: all 1s ease;
+                    max-width: 100%;
+                }
+
+                .image-card:hover img {
+                    -webkit-transform: scale(1.25);
+                    /* Safari and Chrome */
+                    -moz-transform: scale(1.25);
+                    /* Firefox */
+                    -ms-transform: scale(1.25);
+                    /* IE 9 */
+                    -o-transform: scale(1.25);
+                    /* Opera */
+                    transform: scale(1.25);
+                }
+
+                .image-card {
+                    overflow: hidden;
+                }
+            </style>
+            <div class = "program-header"><h1>Programs Catalog</h1></div>
+
+            <% for(let i = 0; i < programs.length; i++){ %>
+                <% if (ProgramCourses[i].length > 0) { %>
+            <div class = "Program-div">
+                <div class = "program-title">
+                    <div class = "program-describ">
+                        <h1> <%= programs[i].PName %> </h1>
+                        <br>
+                        <p style="font-size: 17px;"> <%= programs[i].Program_info %> </p>
+                    </div>
+                    <div style="width: 20%;">    
+                    </div>
+                    <div class="program-img-div"><img src = "<%=programs[i].Program_image %>" alt = "" class="program-img" /></div>
+                </div>
+               
+
+                <div class="program float_l">
+                    <% for(let ii = 0; ii < ProgramCourses[i].length; ii++){ %>
+                        <% let hasCoupoon = 0; var perc = 100; %>
+                        <% for(let iii = 0; iii < pcCoupons.length; iii++){ %>
+                            <% if(pcCoupons[iii].Course_ID == ProgramCourses[i][ii].Course_ID) {%>
+                                <% hasCoupoon = 1; perc = pcCoupons[iii].discount_percentage;}%>
+                        <%}%>
+                        <div class="course float_l">
+                            <a href = "/singleCourse/<%=ProgramCourses[i][ii].Course_ID%>" class = "go-to-course-page"><div class="image-card" ><img src="<%=ProgramCourses[i][ii].Course_image%>" width="100%" height="95%" style ="border-radius: 20px;"/></div></a>
+                           <div class="lable">
+                                <div class="lable-size">
+                                    <h2 style="padding: 8px 4px; margin-top: 8px; text-transform: uppercase;"><b><%= ProgramCourses[i][ii].Course_Name %></b></h2>
+                                    <br>
+
+                                    <div class="instructorNmae">
+                                        <img src="<%= ProgramCourses[i][ii].Profile_Pic%>" class="user-img" alt="?" >
+                                        <label style="letter-spacing: 1.2px;"><%= ProgramCourses[i][ii].Fname %>  <%= ProgramCourses[i][ii].Lname %></label>
+                                        <br>
+                                    </div>
+                                    <div class="Price">
+                                        <br>
+                                        <% if (hasCoupoon==0){ %>
+                                        <label style="font-size: 23px; letter-spacing: 1.2px; color:#017a9b">Price : $ <%= ProgramCourses[i][ii].Cost %></label>
+                                        <% } else { %>
+                                        <del style="font-size: 18px; letter-spacing: 1.2px;">Price : $ <%= ProgramCourses[i][ii].Cost %></del>
+                                        <label style="font-size: 23px; letter-spacing: 1.2px; color:#017a9b">Price : $ <%= ProgramCourses[i][ii].Cost  * (perc/100)%></label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="enrollnow" ><a href="/singleCourse/<%=ProgramCourses[i][ii].Course_ID %>">Enroll Now</a></div>
+                                <br>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div style="margin: auto; width: 40%; display:flex; align-items: center; margin-bottom: 40px;">
+                    <label style="font-size: 30px; color:#017a9b; line-height: 5px;"> EGP <%= programs[i].Cost %></label>
+                    <button class="enroll-into-program-btn" style="margin: auto; text-decoration: none; color:#428bca" id ="enr" onclick="openForm()" >Enroll into Program</button>
+                </div>
+                
+            </div>
+            <div style="height: 60px;"></div>
+            <hr style="width: 30%; margin: auto; border-top: 3.5px solid rgb(201, 203, 204);">
+            <div style="height: 60px;"></div>
+            <% } }%>
+        </div>
+        <div class="loginPopup">
+            <div class="formPopup" id="popupForm">
+              <form class="formContainer" action="" method="POST" action="/programs">
+                <h2>Enroll</h2>
+                <button class="btn" type="submit">Enroll</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+              </form>
+            </div>
+        </div>
+    
+    </div>
+<%- include("layouts/footer") %>

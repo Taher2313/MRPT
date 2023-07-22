@@ -1,0 +1,142 @@
+
+<%- include("layouts/header") %>
+
+<!-- category from academic begin -->
+
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+
+<!-- category from academic end -->
+
+
+<!-- coupons begin -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- coupons end -->
+
+<!-- animation -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<!-- <link rel="stylesheet" href="css/animate.css"> -->
+<!-- animation -->
+
+<section id="labels">
+  <div class="container">
+	<div class="row">
+    <% for(let i = 0; i < coupons.length; i++){  %>
+        <div class="col-sm-6 col-md-3 cat1">
+         
+          <div class="dl">
+            <div class="brand">
+                <h3><a id="GoTo" href="#Category"><%= coupons[i].Category_Name%> </a>
+                </h3>
+            </div>
+            <div class="discount alizarin">
+              <%= coupons[i].discount_percentage %> %
+                <div class="type">
+                    off
+                </div>
+            </div>
+            <br>
+            <div class="ends">
+                <small>
+                    * Conditions and restrictions apply.
+                </small>
+            </div>
+            <div class="coupon  midnight-blue">
+                <a data-toggle="collapse" href="#code<%= i%>" class="open-code">Get a code</a>
+                <div id="code<%= i%>" class="collapse code"><%= coupons[i].Coupon_ID%></div>
+            </div>
+         
+          </div>
+
+        </div>
+        <% } %>
+	</div>
+  </div>
+</section>
+
+<div class="site-section">
+  <div style="margin: auto; width: 30%; display:flex; align-items: center;"><button class="btn-courses" style="margin: auto;"><a href="/course" >Show All Courses</a></button></div>
+  <br><br>
+  <div class="main-container"> 
+      <% for(let i = 0; i < categories.length; i++){  %>
+        <% if(categories_courses[i].length!=0) { %>
+          <div class="container"> 
+            <div class="row mb-5 justify-content-center text-center ">
+              <div class = "category-content">
+                  <div class = "cat-info">
+                    <h2 class="section-title-underline mb-3">
+                      <span id="Category"><p class="animate__animated animate__fadeIn" style="font-size: 40px;"><%= categories[i].CName %></p> </a></span>
+                    </h2>
+                  </div>
+                  <div class = "class-img">
+                    <img class = "courseImg" src = "<%= categories[i].Category_image %>" alt = "Category">
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                  <div class="owl-slide-3 owl-carousel">
+                    <%{ var hasCoupoon = 0; var percen = 100; %>
+                    <% for(let ii = 0; ii < courseCoupons.length; ii++){ %>
+                      <% if(courseCoupons[ii].cat == categories[i].CName){ %>
+                        <% hasCoupoon = 1; percen = courseCoupons[ii].discount_percentage; }%>
+                    <% } %>
+
+                      <% for(let j = 0; j < categories_courses[i].length; j++){ %>
+                      <div class="course-1-item">
+                        
+                        <figure class="thumnail">
+                          <a href="/singleCourse/<%=categories_courses[i][j].Course_ID%>"><img src="<%= categories_courses[i][j].Course_image %>" alt="Image" class="img-fluid"></a>
+                          <% if(hasCoupoon == 1) {%>
+                              <del style="font-size: 30px; color:#017a9b;">EGP <%=categories_courses[i][j].Cost %></del>
+                              <div class="price"><label style="font-size: 30px; color:#017a9b;">EGP <%= categories_courses[i][j].Cost * (percen/100) %></label></div>
+                          <% } else{ %>
+                                                  
+                          <div class="price"><label style="font-size: 30px; color:#017a9b;">EGP <%= categories_courses[i][j].Cost %></label></div>
+                          <%}%>
+                    
+                          <a  style="text-decoration:none;" href="/singleCourse/<%=categories_courses[i][j].Course_ID%>"><div class="category"><h3 style="text-transform: uppercase; font-size: 25px;"><%= categories_courses[i][j].Course_Name %></h3></div>  </a>
+                        </figure>
+                        <div class="course-1-content pb-4">
+                          <h2>How To Create Mobile Apps Using Ionic</h2>
+                          <div class="rating text-center mb-3">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                          </div>
+                          <p class="desc mb-4"><%= categories_courses[i][j].Course_info %></p>
+                          <p><a href="/singleCourse/<%=categories_courses[i][j].Course_ID%>" class="btn btn-primary rounded-0 px-4">Discover The Course Now!</a></p>
+                        </div>
+                      </div>
+                      <%} %>
+                    <% } %>
+                 </div>
+              </div>
+            </div>
+          </div>
+          <br><br><br>
+          <hr style="width: 30%; margin: auto; border-top: 3.5px solid rgb(201, 203, 204);">
+          <br><br><br>
+
+        <% } %> 
+ 
+      <% } %>
+      <br><br>
+
+  </div>
+</div>
+
+  <script src="js/wow.min.js"></script>
+  <script>new WOW().init();</script>
+  <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/main.js"></script>
+
+<%- include("layouts/footer") %>

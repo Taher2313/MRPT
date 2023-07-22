@@ -1,0 +1,334 @@
+
+<%- include("layouts/header") %>
+<div id="particles-js"></div>
+<div class="main_con">
+            <div class="sidenav">
+                <div>
+                    <div class="userImg">
+                        <% if ( SQL[0].Profile_Pic =='err') { %>
+                        <img class="userphoto" src="/images/user.jpg" alt="Avatar" style="border-radius: 50%;">
+                        <% } else { %>
+                            <img class="userphoto" src="<%= SQL[0].Profile_Pic %>" alt="Avatar" style="border-radius: 50%;">
+                        <% } %>
+                        
+                    </div>
+                </div>
+                
+                <% if ( global_username == "")   {  %>
+                <h2 class="Name">UNKNOWN</h2>
+                <% } else {%>
+                    <h2 class="Name">
+                        <%= global_username %>
+                    </h2>
+                <% } %>
+ 
+                <div class="choices">
+                    <a href="/Account_Settings">Profile</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+
+
+
+                    <%  if (global_type == 'instructor' || global_type == 'student' )  {  %>
+
+                    
+                    <a href="/Achievements">Achievements</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+
+                    <%  if (global_type !== "student" )  {  %>
+                              
+                    <a href="/add_any">Avaliable actions</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <%  } %>
+                        <!--                         
+
+                            <%  if ( global_type == "it_adminstrator"  )  {  %>
+
+                    <a href="/add_any">Add Instructors</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                     
+                    <%  } %>                        
+
+                        <%  if (global_type == "owner" )  {  %>
+
+                    <a href="/add_any">Add IT Adminstrators</a>
+                    <hr style="border-top: 1px solid #bbb;">
+    
+                    <%  } %>                        
+
+                        <%  if (global_type == "it_adminstrator" )  {  %>
+
+
+                    <a href="/add_any">Add Program</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    
+                    <a href="/add_any">Update Program</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    
+                    <a href="/add_any">Delete Program</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <%  } %>                        
+
+                   
+                        <%  if (global_type == "it_adminstrator" )  {  %>
+
+                    <a href="/add_any">Add Category</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <a href="/add_any">Delete Category</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+                   
+
+                    
+                        <%  if (global_type == "owner" )  {  %>
+
+
+                    <a href="/add_any">Add Coupon</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+                                       
+                        <%  if (global_type == "owner" )  {  %>
+
+
+                    <a href="/add_any">Update Coupon</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                                
+                    <% } %>
+                   
+                        <%  if (global_type == "owner" )  {  %>
+
+
+                    <a href="/add_any">Delete Coupon</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <%  } %>                         -->
+                               
+                    <% if ( global_type !== "")   {  %>
+                    <a href="/logout">Log Out</a>
+                    <% } %>     
+                </div>
+            </div>
+
+            <div class="form-container">
+
+                <div class="grid-info-content">
+                    
+                    <form class="infoForm" id="infoForm" method="POST" action="/Account_Settings" enctype="multipart/form-data">
+
+                    <% if(message.length >0){ %>
+                        <div id="alerty" class="alert alert-warning" role="alert">
+                        <div id="msg"><%= message%> </div>
+                        <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                    
+                    </div><br>
+                    <% } %>
+                    <div class="informations">
+                        <div class="prof-info">
+                            <h3>Profile</h3>
+                                <div class="profile-info">
+                                    <div class="labels">
+                                        <label for="First Name">First Name</label>
+                                        <label for="Last Name">Last Name</label>
+                                    </div>
+                                    <div class="corr_inputs">
+                                        <input id="First Name" type="text" name="FirstName" size="40"placeholder="<%= SQL[0].Fname %>">
+                                        <input id="Last Name" type="text" name="LastName" size="40"placeholder="<%= SQL[0].Lname %>">
+                                         <!-- <button type="reset" class="btnupload" id="file">Upload</button> -->
+                                         <input id="image" type="file" name="uploaded_image" accept="Course Image"/>
+                                    </div>                                    
+                               </div>  
+                        </div>
+                        <br>
+                        <hr style="border-top: 2px solid #bbb;">
+
+                        <div class="acc-info">
+                            <h3>Account Settings</h3>
+                            <div class="account-info">
+                                <div class="labels">
+                                    <label for="Username">Username</label>
+
+                                    <label for="Email">E-mail</label>
+                                    
+                                    <label for="Password">Password</label>
+                                    <label for="Password">Confirm Password</label>
+
+                                </div>
+                                
+                                <div class="corr_inputs">
+                                    <input id="Username" type="text" name="Username" size="40" placeholder="<%=Username %>">
+                                    <input id="Email" type="email" name="Email" size="40" placeholder="<%= SQL[0].Email %>">
+                                    <input id="Password" type="password" name="Password" size="40" >
+                                    <input id="Password" type="password" name="ConfPassword" size="40" >
+
+                                </div>
+
+                            </div>
+                            <button type="submit" class="save-btn">SAVE CHANGES </button>
+
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type='text/javascript'>
+    $(function(){
+      // Wrap your File input in a wrapper <div>
+      var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
+      var fileInput = $(':file').wrap(wrapper);
+
+      // When your file input changes, update the text for your button
+      fileInput.change(function(){
+        $this = $(this);
+        // If the selection is empty, reset it
+        if($this.val().length == 0) {
+          $('#file').text("Your Text to Choose a File Here!");
+        }else{
+          $('#file').text($this.val());
+        }
+      })
+
+      // When your fake button is clicked, simulate a click of the file button
+      $('#file').click(function(){
+        fileInput.click();
+      }).show();
+    });
+    </script> -->
+ <%- include("layouts/footer") %>
+
+
+
+
+
+        <!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo2.png" style="width: 200px; height: 200px;">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+
+
+    <link rel="stylesheet" href="css/<%= css %>.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <title>
+        <%= title %>
+    </title>
+
+</head>
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "none";
+            } else {
+                li[i].style.display = "visible";
+            }
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+            document.getElementById('header').style.backgroundImage = "none";
+        }
+    }
+</script>
+
+<body>
+    <main>
+        <div class="main-cont">
+            <div class="header-nav">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a href="/home"> <img class="logo-icon" src="/images/logo2.png" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto" style="display:flex; align-items: center; justify-content: space-around;">
+                            <li class="nav-item <% if (title === 'categories') { %>active<% } %>">
+                                <div class="dropdown show" style="padding-left:0px;">
+                                    <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+                 color: rgb(228, 222, 222);
+                 font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat1</a> </ul>
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat2</a> </ul>
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat3</a> </ul>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
+                                <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.3rem">Programs</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <input class="search" type="text" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+                            </li>
+
+                            <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
+                                <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.3rem">Join Our Staff</a>
+                            </li>
+
+                            <li class="nav-item <% if (title === 'login') { %>active<% } %>">
+                                <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.3rem">Sign In or Sign Up</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.3rem">Donate</a>
+                            </li>
+
+                            <li class="nav-item <% if (title === 'account') { %>active<% } %>">
+                                <div class="dropdown show" style="padding-left:0px;">
+                                    <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+                     color: rgb(228, 222, 222);
+                     font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Account</a>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <ul><a href="/Account_Settings" style="color:rgb(228, 222, 222);font-size: 1.3rem">Profile</a> </ul>
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Log Out</a> </ul>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+                        </ul>
+
+                        <div class="my-2 my-lg-0">
+
+                        </div>
+                    </div>
+                </nav>
+            </div> -->

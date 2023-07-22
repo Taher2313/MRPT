@@ -1,0 +1,124 @@
+
+
+</main>
+
+<footer class="footer">
+    <h1>Follow us on </h1>
+    <div class="contact-links">
+        <a href="/views/Home.ejs"><i class="fa fa-facebook fa-lg fa-fw" aria-hidden="true"></i></a>
+        <a href="/views/Home.ejs"><i class="fa fa-twitter fa-lg fa-fw" aria-hidden="true"></i></a>
+        <a href="/views/Home.ejs"><i class="fa fa-instagram fa-lg fa-fw" aria-hidden="true"></i> </a>
+        <a href="/views/Home.ejs"><i class="fa fa-youtube-play fa-lg fa-fw" aria-hidden="true"></i> </a>
+    </div>
+    <h4>Copyright © 2020 MRPT | All Rights Reserved.| </h4>
+</footer>
+
+  
+
+<script src="/js/wow.min.js "></script>
+<script src="/js/footer.js"></script>
+<script src="/js/<%= css %>.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/js/particles/js/particles.js"></script>
+<script src="/js/particles/js/app.js"></script>
+
+<!-- stats.js -->
+<script src="/js/lib/stats.js"></script>
+
+<script>
+    
+    new WOW().init(); 
+    $("body").niceScroll({
+    cursorcolor:"aquamarine",
+    cursorwidth:"16px"
+});</script>
+
+<script type="text/javascript">
+    $(function(){
+        $('a').click(function(){
+            var link = $(this).attr("x");
+            function onYouTubePlayerAPIReady() {
+                player = new YT.Player('player', {
+                height: '500',
+                width: '900',
+                videoId: $(".video-container").attr("videoLink"),
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+                });
+            }
+
+    // autoplay video
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+    // when video ends
+            function onPlayerStateChange(event) {        
+                if(event.data === 0) { 
+                    console.log("second");             
+                    alert('done');
+                }
+            }
+            player.cueVideoById(link);
+        });
+    });
+</script>
+
+<script src="http://www.youtube.com/player_api"></script>
+
+<script>
+    
+    // create youtube player
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          height: '500',
+          width: '900',
+          videoId: $(".video-container").attr("videoLink"),
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    }
+
+    // autoplay video
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    // when video ends
+    function onPlayerStateChange(event) {        
+        if(event.data === 0) {
+            console.log("first");  
+            alert('done');
+        }
+    } 
+
+</script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
+<script>
+    function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+    }
+    function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+    function buycourse(){
+        
+    }
+    function enrollProgram(){
+
+    }
+    $('#enr').click(function(){
+        console.log("clicked");
+        document.getElementById("popupForm").style.display = "block";
+    });
+</script>
+<!-- https://vijayasankarn.wordpress.com/2016/12/29/using-query-string-in-script-tag-javascript/ -->
+</body>
+</html>

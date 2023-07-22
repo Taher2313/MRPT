@@ -1,0 +1,25 @@
+
+<%- include("layouts/header") %>
+<div class="main_con">
+            <div class="sidenav">
+                
+                <h2 class="Name"><%= course_title %></h2>
+
+                <div class="choices">
+                    <% for(let i = 0; i < videos.length; i++){ %>
+                    <a href="#" x = "<%= videos[i].Video_Link %>" id = "<%= videos[i].Video_Name %>"><%= videos[i].Video_Name %></a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <% } %>
+ 
+                    <!-- quizzes tabs are here -->
+                    
+                </div>
+            </div>
+
+            <div class = "container" style="height: 600px">
+                <div class = "video-container" id = "player" videoLink = "<%= videos[0].Video_Link %>">
+                </div>
+            </div>
+        </div>
+</div>
+ <%- include("layouts/footer") %>

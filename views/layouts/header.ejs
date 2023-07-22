@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo2.png" style="width: 200px; height: 200px;">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="/css/<%= css %>.css">
+    <link rel="stylesheet" href="/css/animate.css">
+
+    <title>
+        <%= title %>
+    </title>
+
+</head>
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/home"> <img src="/images/logo2.png" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" style="display:flex; align-items: center; justify-content: space-around;">
+                <li class="nav-item <% if (title === 'categories') { %>active<% } %>">
+                    <div class="dropdown show" style="padding-left:0px;">
+                        <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+         color: rgb(228, 222, 222);
+         font-size: 1.5rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.2rem">Categories</a>
+                        </a>
+                        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat1</a> </ul>
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat2</a> </ul>
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat3</a> </ul>
+
+                        </div> -->
+
+                    </div>
+                </li>
+                <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
+                    <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.25rem">Programs</a>
+                </li>
+                <li class="nav-item <% if (title === 'Courses') { %>active<% } %>">
+                    <a class="nav-link" href="/course" style="color:rgb(228, 222, 222);font-size: 1.25rem">Courses</a>
+                </li>
+
+                <li class="nav-item">
+                    <input class="search" type="text" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+                </li>
+
+                <% if (  global_type == "" )   {  %>
+                    
+                <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
+                    <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.25rem">Join Our Staff</a>
+                </li>
+                
+                <li class="nav-item <% if (title === 'login') { %>active<% } %>">
+                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.25rem">Sign In </a>
+                </li>
+                <% } %>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.25rem">Donate</a>
+                </li>
+
+                <% if (  global_type !== "" )   {  %>
+
+                <li class="nav-item <% if (title === 'account') { %>active<% } %>">
+                    <div class="dropdown show" style="padding-left:0px;">
+                        <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+             color: rgb(228, 222, 222);
+             font-size: 1.2rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="/Account_Settings" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.2rem">Account</a>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <ul><a href="/Account_Settings" style="color:rgb(21, 73, 116);  text-decoration:none; font-size: 1.2rem">Profile</a> </ul>
+                            <ul><a href="/logout" style="color:rgb(21, 76, 121);font-size: 1.2rem; text-decoration:none;">Log Out</a> </ul>
+
+                        </div>
+
+                    </div>
+                </li>
+                <% } %>
+
+            </ul>
+
+            <div class="my-2 my-lg-0">
+
+            </div>
+        </div>
+    </nav>
+</header>
+<script>
+    // function myFunction() {
+    //     // Declare variables
+    //     var input, filter, ul, li, a, i;
+    //     input = document.getElementById("mySearch");
+    //     filter = input.value.toUpperCase();
+    //     ul = document.getElementById("myMenu");
+    //     li = ul.getElementsByTagName("li");
+
+    //     // Loop through all list items, and hide those who don't match the search query
+    //     for (i = 0; i < li.length; i++) {
+    //         a = li[i].getElementsByTagName("a")[0];
+    //         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //             li[i].style.display = "none";
+    //         } else {
+    //             li[i].style.display = "visible";
+    //         }
+    //     }
+    // }
+    // window.onscroll = function() {
+    //     scrollFunction()
+    // };
+
+    // function scrollFunction() {
+    //     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+    //         document.getElementById('header').style.backgroundImage = "none";
+    //     }
+    // }
+</script>
+
+
+<body>
+    <main>

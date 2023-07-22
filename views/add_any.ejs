@@ -1,0 +1,484 @@
+<%- include("layouts/header") %>
+
+<!-- <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />-->
+    
+
+<section  id="particles-js"></section>
+
+<div class="main-cont">
+<!--ADD Course-->
+<%  if (global_type == "instructor" )  {  %>
+    <div class="course">
+        <h3>Add New Course</h3>
+        <form class="infoForm" id="infoForm" method="post" action="/add_any" enctype="multipart/form-data">
+            <% if(message.length >0){ %>
+                <div id="alerty" class="alert alert-warning" role="alert">
+                <div id="msg"><%= message%> </div>
+                <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+            
+            </div><br>
+            <% } %>
+            <div class="Course-info">
+                <div class="labels">
+                    <label for="Course_Name">Course Name</label>
+                    <label for="Instructor_username">Instructor Username</label>
+                    <label for="Cost">Cost</label>
+                    <label for="Duration">Course Duration</label>
+                    <label for="Category">Category Name</label>
+                    <label for="mob_no">Course Image</label>
+                    <label for="Course_link">Course content link</label>
+                    <label for="Course_small_info">Course small info</label>
+                    <label for="Course_info">Course Brief info</label>
+                </div>
+                <div class="corr_inputs">
+                    <input id="Course_Name" type="text" name="Course_Name" size="40"placeholder="Course Name">
+                    <input id="Instructor_username" type="text" name="Instructor_username" size="40"placeholder="Instructor Username">
+                    <input id="Cost" type="number" name="Cost" size="40"placeholder="Cost">
+                    <input id="Duration" type="number" name="Duration"placeholder="Course Duration">
+                    <input id="Category" type="text" name="Category" placeholder="Category Name">
+                    <input class="form-control" type="file" name="uploaded_image" accept="Course Image"/>
+                    <textarea name="Course_link" id="" cols="5" rows="2"></textarea>
+                    <textarea name="Course_small_info" id="" cols="5" rows="2"></textarea>
+                    <textarea name="courseInformation" id="" cols="10" rows="5"></textarea>
+                </div>
+                
+            </div>
+            <button type="submit" class="save-btn">ADD</button>
+        </form>
+    </div>
+<% } %>
+<!--Delete Course-->
+<%  if (global_type == "instructor" )  {  %>
+<div class="course">
+    <h3>Delete Course</h3>
+    <form class="infoForm" id="infoForm" method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="Instructor_username_courseD">Course instructor Username </label>
+                <label for="courseD">Course ID </label>
+            </div>
+            <div class="corr_inputs">
+                <input id="Instructor_username_courseD" type="text" name="Instructor_username_courseD" size="40"placeholder="Instructor Username" required="">
+                <input id="courseD" type="text" name="courseD" size="40"placeholder="Course ID" required="">
+            </div>
+            
+        </div>
+        <button type="submit" class="save-btn">Delete Course</button>
+    </form>
+</div>
+<% } %>
+<!--Add Category-->
+<%  if (global_type == "it_adminstrator" )  {  %>
+        <div class="course">
+            <h3>Add New Category</h3>
+            <form class="infoForm" id="infoForm" method="post" action="/add_any"enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Category_Name">Category Name</label>
+                        <label for="IT_username">IT Username</label>
+                        <label for="Category_image">Category Image</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Category_Name" type="text" name="Category_Name" size="40" required="">
+                        <input id="IT_username" type="text" name="IT_username" size="40"required="">
+                        <input class="form-control" type="file" name="cat_image" accept="cat image"/>
+                    </div>
+                    
+                </div>
+                <button class="save-btn" type="submit">ADD</button>
+            </form>
+        </div>
+        <% } %>
+<!--Delete Category -->
+<%  if (global_type == "it_adminstrator" )  {  %>
+    <div class="course">
+        <h3>Delete Category</h3>
+        <form class="infoForm" id="infoForm" method="post" action="/add_any"enctype="multipart/form-data">
+            <% if(message.length >0){ %>
+                <div id="alerty" class="alert alert-warning" role="alert">
+                <div id="msg"><%= message%> </div>
+                <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+            
+            </div><br>
+            <% } %>
+            <div class="Course-info">
+                <div class="labels">
+                    <label for="Category_NameD">Category Name</label>
+                </div>
+                <div class="corr_inputs">
+                    <input id="Category_NameD" type="text" name="Category_NameD" size="40" required="">
+                </div>
+                
+            </div>
+            <button class="save-btn" type="submit">Delete Category</button>
+        </form>
+    </div>
+    <% } %>
+<!-- Add program-->
+<%  if (global_type == "it_adminstrator" )  {  %>
+        <div class="course">
+            <h3>Add New Program</h3>
+            <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Program_Name">Program Name</label>
+                        <label for="IT_username_cat">IT Username</label>
+                        <label for="Cost">Cost</label>
+                        <label for="Duration_program"> Duration</label>
+                        <label for="Level">Program Level</label>
+                        <label for="Category_image">Program Image</label>
+                        <label for="program_info">Program Info</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Program_Name" type="text" name="Program_Name" size="40" required="">
+                        <input id="IT_username_prog" type="text" name="IT_username_prog" size="40" required="">
+                        <input id="Cost_prog" type="number" name="Cost_prog" size="40" required="">
+                        <input id="Duration_program" type="number" name="Duration_program" required="">
+                        <select name="Level" id="Level">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Nano degree">Nano degree</option>
+                            <option value="Master degree">Master degree</option>
+                        </select>
+                        <input class="form-control" type="file" name="Program_img" accept="prog image"/>
+                        <textarea name="program_info" id="" cols="10" rows="5"></textarea>
+                        
+                    </div>
+                    
+                </div>
+                <button class="save-btn" type="submit">ADD</button>
+            </form>
+        </div>
+        <% } %>
+<!--update Program-->
+<%  if (global_type == "it_adminstrator" )  {  %>
+<div class="course">
+    <h3>Update Program</h3>
+    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="Program_NameU">Program Name</label>
+                <label for="Cost">Cost</label>
+                <label for="Duration_program"> Duration</label>
+                <label for="Level">Program Level</label>
+                <label for="Category_image">Program Image</label>
+                <label for="program_info">Program Info</label>
+            </div>
+            <div class="corr_inputs">
+                <input id="Program_NameU" type="text" name="Program_NameU" size="40" required="">
+                <input id="Cost_progU" type="number" name="Cost_progU" size="40" >
+                <input id="Duration_programU" type="number" name="Duration_programU" >
+                <select name="LevelU" id="LevelU">
+                    <option value=""></option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Nano degree">Nano degree</option>
+                    <option value="Master degree">Master degree</option>
+                </select>
+                <input class="form-control" type="file" name="Program_imgU" accept="prog imageU"/>
+                <textarea name="program_infoU" id="" cols="10" rows="5"></textarea>
+                
+            </div>
+            
+        </div>
+        <button class="save-btn" type="submit">Update Program</button>
+    </form>
+</div>
+<% } %>
+<!--Delete program-->
+<%  if (global_type == "it_adminstrator" )  {  %>
+<div class="course">
+    <h3>Delete Program</h3>
+    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="Program_NameD">Program Name</label>
+            </div>
+            <div class="corr_inputs">
+                <input id="Program_NameD" type="text" name="Program_NameD" size="40" required="">
+                
+            </div>
+            
+        </div>
+        <button class="save-btn" type="submit">Delete Program</button>
+    </form>
+</div>
+<% } %>
+ <!-- Review ALL instructors-->
+ <%  if (global_type == "it_adminstrator" )  {  %>
+        <div class="course">
+            <h3>Review Instructors</h3>
+            <br>
+                <% if( instructors && instructors.length>0) { %>
+                    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                        <% if(message.length >0){ %>
+                            <div id="alerty" class="alert alert-warning" role="alert">
+                            <div id="msg"><%= message%> </div>
+                            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                        
+                        </div><br>
+                        <% } %>
+                        <% for(var i = 0; i < instructors.length; i++) { %>
+                            <div class="Review">
+                                <div class="review_labels">
+                                    <label for="INSTRUCT_USER"><h6><%=instructors[i].Username%></h6></label>
+                                </div>
+                                <div class="review_links">
+                                    <a href="<%=instructors[i].CV_Link%>">CV Link</a>
+                                </div>
+                                <div class="corr_inputs_review">
+                                    <select class="<%= i %>" name="<%= i %>" id="<%= i %>" >
+                                        <option value="Select">Select</option>
+                                        <option value="Accepted">Accepted</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            <% } %>
+                        <button class="save-btn" type="submit">SUBMIT</button>
+                        
+                    </form>      
+                <% }else{ %>
+                    <h3>No instructors in the waiting list to review</h3>
+                <% } %>
+        </div>
+        <% } %>
+<!--Delete Instructor-->
+<%  if (global_type == "it_adminstrator" )  {  %>
+<div class="course">
+    <h3>Delete Instructors</h3>
+    <br>
+        <% if( instructors && instructors.length>0) { %>
+            <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
+                    <div class="Review">
+                        <div class="review_labels">
+                            <label for="INSTRUCT_USER"><h6>Choose Instructor Username</h6></label>
+                        </div>
+                        <div class="corr_inputs_review">
+                            <select class="Delet_instructor" name="Delet_instructor" id="Delet_instructor" >
+                                <option value=""></option>
+                                <% for(var i = 0; i < instructors.length; i++) { %>
+                                
+                                <option value="<%=instructors[i].Username%>"><%=instructors[i].Username%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        
+                    </div>
+                <button class="save-btn" type="submit">Delete</button>
+                
+            </form>      
+        <% }else{ %>
+            <h3>No instructors to review</h3>
+        <% } %>
+</div>
+<% } %>
+ <!-- ADD IT Adminstrators-->
+ <%  if (global_type == "owner" )  {  %>
+        <div class="course">
+            <h3>Add IT Adminstrator</h3>
+            <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="IT_FName">IT First Name</label>
+                        <label for="IT_LName">IT Last Name</label>
+                        <label for="Owner_username">Owner username</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="IT_FName" type="text" name="IT_FName" size="40">
+                        <input id="IT_LName" type="text" name="IT_LName" size="40">
+                        <input id="Owner_username" type="text" name="Owner_username" size="40" required="">
+                    </div>
+                    
+                </div>
+                <button class="save-btn"type="submit">ADD</button>
+            </form>
+        </div>
+        <% } %>
+<!--Delete IT-->
+<%  if (global_type == "owner" )  {  %>
+<div class="course">
+    <h3>Delete IT Adminstrator</h3>
+    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="IT_Delete">IT username</label>
+            </div>
+            <div class="corr_inputs">
+                <input id="IT_Delete" type="text" name="IT_Delete" size="40" required="">
+            </div>
+            
+        </div>
+        <button class="save-btn"type="submit">Delete IT</button>
+    </form>
+</div>
+<% } %>
+ <!--ADD NEW COUPON-->
+ <%  if (global_type == "owner" )  {  %>
+        <div class="course">
+            <h3>Add New Coupon</h3>
+            <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Owner_username">Owner username</label>
+                        <label for="percentage">Discount percentage</label>
+                        <label for="start">start Date</label>
+                        <label for="end">End Date</label>
+                        <label for="Category">Category Name</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Owner_username" type="text" name="Owner_username2" size="40">
+                        <input id="percentage" type="number" name="percentage" size="40">
+                        <input id="start" type="date" name="start">
+                        <input id="end" type="date" name="end">
+                        <input id="Category" type="text" name="Category2" size="40">                       
+                    </div>
+                    
+                </div>
+                <button class="save-btn" type="submit">ADD</button>
+            </form>
+        </div>
+        <% } %>
+ <!--Update COUPON-->
+ <%  if (global_type == "owner" )  {  %>
+        <div class="course">
+         <h3>Update Coupon</h3>
+           <% if( coupons_list.length >0){ %>
+                <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                    <% if(message.length >0){ %>
+                        <div id="alerty" class="alert alert-warning" role="alert">
+                        <div id="msg"><%= message%> </div>
+                        <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                    
+                    </div><br>
+                    <% } %>
+                    <div class="Course-info">
+                        <div class="labels">
+                            <label for="Owner_username_couponU">Owner username</label>
+                            <label for="Coupon_id_update">Coupon ID</label>
+                            <label for="percentage_U">Discount percentage</label>
+                            <label for="start_U">start Date</label>
+                            <label for="end_U">End Date</label>
+                            <label for="Category_U">Category Name</label>
+                        </div>
+                        <div class="corr_inputs">
+                            <input id="Owner_username_couponU" type="text" name="Owner_username_couponU" size="40" required="" > 
+
+                            <select class="Coupon_id_update" name="Coupon_id_update" id="Coupon_id_update" >
+                                <option value=""> </option>
+                                <% for(var i = 0; i < coupons_list.length; i++) { %>
+                                <option value="<%=coupons_list[i].Coupon_ID%>"><%=coupons_list[i].Coupon_ID%></option>
+                                <% } %>
+                            </select>      
+                            <input id="percentage_U" type="number" name="percentage_U" size="40" required="" >     
+                            <input id="start_U" type="date" name="start_U" required="">     
+                            <input id="end_U" type="date" name="end_U"  required="">     
+                            <input id="Category_U" type="text" name="Category_U" size="40" required="">                       
+                        </div>
+                        
+                    </div>
+                    <button class="save-btn" type="submit">Update Coupon</button>
+                </form>
+            <% } %>
+        </div>
+        <% } %>
+ <!--Delete COUPON-->
+ <%  if (global_type == "owner" )  {  %>
+        <div class="course">
+            <h3>Delete Coupon</h3>
+            <% if(coupons_list.length >0){ %>
+                <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                    <% if(message.length >0){ %>
+                        <div id="alerty" class="alert alert-warning" role="alert">
+                        <div id="msg"><%= message%> </div>
+                        <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                    
+                    </div><br>
+                    <% } %>
+                    <div class="Course-info">
+                        <div class="labels">
+                            <label for="Coupon_id_delete">Coupon ID</label>
+                        </div>
+                        <div class="corr_inputs">
+                            <select class="Coupon_id_delete" name="Coupon_id_delete" id="Coupon_id_delete" >
+                                <option value=""> </option>
+                                <% for(var i = 0; i < coupons_list.length; i++) { %>
+                                <option value="<%=coupons_list[i].Coupon_ID%>"><%=coupons_list[i].Coupon_ID%></option>
+                                <% } %>
+                            </select>                             
+                        </div>
+                        
+                    </div>
+                    <button class="save-btn" type="submit">Delete Coupon</button>
+                </form>
+            <% } %>
+        </div>
+    </div>
+    <% } %>
+
+<%- include("layouts/footer") %>

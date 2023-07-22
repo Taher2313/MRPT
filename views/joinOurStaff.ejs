@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script> 
+     function check_pass() {
+  const password = document.querySelector('input[name=Password]');
+  const confirm = document.querySelector('input[name=ConfirmPassword]');
+  if (confirm.value === password.value) {
+    confirm.setCustomValidity('');
+  } else {
+    confirm.setCustomValidity('Passwords do not match');
+  }
+}
+      </script>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/joinOurStaff.css">
+  </head>
+  
+  <body>
+    <div class="login-box" >
+      <div>
+        <% if (   typeof errors !== 'undefined')   {  %>
+        <%  errors.forEach(error => {  %>
+              
+          <div style="  background-color: rgb(3, 160, 16);" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error.msg; %>          
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+         
+          <%  }); %>
+            
+        <% } %>
+      </div>
+      <form   action="/joinOurStaff" method = "POST"  >
+      <h1>Join Us</h1>
+        
+     
+
+
+      <div class="textbox">
+        <i class="far fa-user-circle"></i>
+        <input type="text" placeholder="First Name" name ="FirstName" required = "">
+      </div>
+      
+      <div class="textbox">
+        <i class="far fa-user-circle"></i>
+        <input type="text" placeholder="Last Name" name ="LastName" required = "">
+      </div>
+      
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+    <input type="text" placeholder="Username" name="Username" required = "" >
+  </div>
+  <div class="textbox">
+  <select class="textbox" name="Gender" placeholder="Gender" >
+    <option class="textbox" value="Male"  > Male </option>
+    <option  class="textbox" value="Female"> Female </option>                
+  </select>
+</div>
+
+<div class="textbox">
+  <i class="fa fa-link" aria-hidden="true"></i>
+  <input type="text" placeholder="CV Link" name ="CVLink" required = "">
+</div>
+
+
+  <div class="textbox">
+    <i class="far fa-envelope"></i>
+    <input  type="email" placeholder="Email" name="Email" required = "" >
+  </div>
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    <input type="password" placeholder="Password" name="Password" required = "" onchange='check_pass();' >
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    <input type="password" placeholder="Confirm Password" name="ConfirmPassword" required = "" onchange='check_pass();' >
+  </div> 
+  <input type="submit" class="btn" value="Join Now" id="submit"  />
+  </form>
+</div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
+
+</html>

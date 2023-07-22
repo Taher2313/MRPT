@@ -1,0 +1,60 @@
+<%- include("layouts/header") %>
+
+<link rel="stylesheet" href="css/partials/bootstrap.min.css">
+<link rel="stylesheet" href="css/course.css">
+
+<div id="myCarousel" >
+    <a href="#"><h4 >Join Our Courses Now ! </h4></a>  
+    <!-- <h3> Our Courses</h3>  -->
+</div>
+<!-- <br><br><br><br> -->
+            
+<div class="popular page_section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <h1>Popular Courses</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row course_boxes"> 
+            <% for (var i=0; i < courses.length; i++) {%>
+            <div class="col-lg-4 course_box">
+                <div class="card">
+                    <img class="card-img-top" src="<%= courses[i].Course_image %>" alt="https://unsplash.com/@kellybrito">
+                    <div class="card-body text-center">
+                        <div class="card-title"> <a href='/singleCourse/<%= courses[i].Course_ID %>' > <%= courses[i].Course_Name %></a></div>
+                        <div class="card-text"><%= courses[i].Course_small_info %></div>
+                        <a href='/singleCourse/<%= courses[i].Course_ID %>' ><h1 style="color: cornflowerblue;">Enroll Now !</h1></a>
+                    </div>
+                    <div class="price_box d-flex flex-row align-items-center">
+                        <div class="course_author_image">
+                            <img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
+                        </div>
+
+                        <div class="course_author_name"><%= courses[i].Fname +" "+ courses[i].Lname+"   " %><span>  Author</span></div>
+                        <div class="course_price d-flex flex-column align-items-center justify-content-center">
+                            <% {let found = 0; %>
+                            <% for(let ii = 0; ii < cCouponsID.length; ii++){ %>
+                                <% if(cCouponsID[ii].Course_ID == courses[i].Course_ID){ %>
+                                    <% found = 1; %>
+                                    <del>$ <%= courses[i].Cost %></del>
+                                    <span>$ <%= courses[i].Cost * (cCouponsID[ii].discount_percentage)/100 %></span>
+                                <% } %>
+                            <% } %>
+                                <% if(found == 0){ %>
+                                <span>$ <%= courses[i].Cost %></span>
+                                <%} }%>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>		
+</div>
+
+<%- include("layouts/footer") %>

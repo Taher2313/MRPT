@@ -1,0 +1,37 @@
+<%- include("layouts/header") %>
+<div class="Container">
+   <div id="particles-js"></div>
+    <form class="login-box" action="/Donate" method="POST" >
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%></div> 
+            <button id='close' onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>x</button>
+        </div><br>
+        <% } %>
+        <h1>Donate</h1> 
+        <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input id="Orgnization_name" type="text" placeholder="Orgnization name" name="Orgnization_name">
+        </div>
+
+        <div class="textbox">
+            <i class="far fa-envelope"></i>
+            <input type="text" placeholder="Email" name="Email">
+        </div>
+
+        <div class="textbox">
+            <i class="fas fa-dollar-sign"></i>
+        
+            <input type="text" placeholder="amount in dollars" name="amount">
+        </div>
+
+        <div class="textbox">
+            <i class="far fa-calendar-alt"></i>
+            <input type="Date" placeholder="" name="date">
+        </div>
+
+        <input type="submit" class="btun" value="Donate Now">
+    </form>
+
+</div>
+<%- include("layouts/footer") %>
